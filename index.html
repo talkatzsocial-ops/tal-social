@@ -208,4 +208,16 @@ if('IntersectionObserver' in window){
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.15});
 document.querySelectorAll('[data-r]').forEach(function(el){io.observe(el)});
 }else{document.querySelectorAll('[data-r]').forEach(function(el){el.classList.add('on')})}
-</script></body></html>
+</script> <script>
+if (new URLSearchParams(window.location.search).get('sent') === '1') {
+  var successMessage = document.getElementById('ok');
+
+  if (successMessage) {
+    successMessage.textContent = 'הטופס נשלח בהצלחה ואחזור אלייך בקרוב!';
+    successMessage.hidden = false;
+  }
+
+  window.history.replaceState({}, document.title, window.location.pathname);
+}
+</script>
+ </body></html>
