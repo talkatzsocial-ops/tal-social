@@ -217,7 +217,8 @@ if (new URLSearchParams(window.location.search).get('sent') === '1') {
     successMessage.hidden = false;
   }
 
-  window.history.replaceState({}, document.title, window.location.pathname);
+  window.history.replaceState({}, document.title, window.location.pathname + '#form');
+document.getElementById('form').scrollIntoView({block:'start'});
 }
 </script>
  </body></html>
