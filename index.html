@@ -208,17 +208,53 @@ if('IntersectionObserver' in window){
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.15});
 document.querySelectorAll('[data-r]').forEach(function(el){io.observe(el)});
 }else{document.querySelectorAll('[data-r]').forEach(function(el){el.classList.add('on')})}
-</script> <script>
+<script>
 if (new URLSearchParams(window.location.search).get('sent') === '1') {
-  var successMessage = document.getElementById('ok');
+  document.body.insertAdjacentHTML('beforeend', `
+    <div style="
+      position:fixed;
+      inset:0;
+      z-index:99999;
+      background:#FBF5EC;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      direction:rtl;
+      padding:30px;
+    ">
+      <div style="
+        max-width:700px;
+        width:100%;
+        background:#F6DFDB;
+        border-radius:28px;
+        padding:70px 35px;
+        box-sizing:border-box;
+      ">
+        <div style="font-size:64px;margin-bottom:25px;">🤍</div>
+        <h1 style="
+          font-family:'Frank Ruhl Libre',Georgia,serif;
+          font-size:clamp(36px,7vw,58px);
+          margin:0 0 25px;
+          color:#3E2D29;
+        ">
+          הטופס נשלח בהצלחה!
+        </h1>
+        <p style="
+          font-family:'Frank Ruhl Libre',Georgia,serif;
+          font-size:clamp(22px,4vw,30px);
+          line-height:1.6;
+          margin:0;
+          color:#5B4A45;
+        ">
+          אחזור אלייך בקרוב 🤍
+        </p>
+      </div>
+    </div>
+  `);
 
-  if (successMessage) {
-    successMessage.textContent = 'הטופס נשלח בהצלחה ואחזור אלייך בקרוב!';
-    successMessage.hidden = false;
-  }
-
-  window.history.replaceState({}, document.title, window.location.pathname + '#form');
-setTimeout(function(){window.scrollTo(0,document.getElementById('form').offsetTop);},300);
+  window.history.replaceState({}, document.title, window.location.pathname);
 }
+</script>
 </script>
  </body></html>
