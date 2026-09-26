@@ -218,7 +218,7 @@ if (new URLSearchParams(window.location.search).get('sent') === '1') {
   }
 
   window.history.replaceState({}, document.title, window.location.pathname + '#form');
-document.getElementById('form').scrollIntoView({block:'start'});
+setTimeout(function(){window.scrollTo(0,document.getElementById('form').offsetTop);},300);
 }
 </script>
  </body></html>
